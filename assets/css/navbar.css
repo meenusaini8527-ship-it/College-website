@@ -1,0 +1,255 @@
+:root {
+    --primary: #0f4c81;
+    --primary-dark: #072b4b;
+    --accent: #ffb703;
+    --text: #1f2937;
+    --light: #f7f9fc;
+    --border: #e5e7eb;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--text);
+    background: var(--light);
+}
+
+.site-header {
+    background: #fff;
+    box-shadow: 0 6px 24px rgba(15, 76, 129, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.top-header {
+    background: var(--primary-dark);
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.65rem 5%;
+    font-size: 0.92rem;
+}
+
+.top-links,
+.top-contact {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.top-header a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    gap: 1rem;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    color: var(--primary);
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 1.15rem;
+}
+
+.brand-mark {
+    background: var(--primary);
+    color: #fff;
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+}
+
+.menu-toggle {
+    display: none;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    padding: 0.3rem;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--primary);
+    margin: 5px 0;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-list > li {
+    position: relative;
+}
+
+.nav-list a {
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.6rem 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.nav-list a:hover,
+.nav-list a:focus-visible {
+    color: var(--primary);
+}
+
+.caret {
+    font-size: 0.9rem;
+}
+
+.dropdown-menu,
+.mega-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    background: #fff;
+    border: 1px solid var(--border);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border-radius: 10px;
+    min-width: 220px;
+    padding: 0.7rem 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    transition: all 0.2s ease;
+}
+
+.has-dropdown:hover .dropdown-menu,
+.has-dropdown:hover .mega-menu,
+.has-dropdown.open .dropdown-menu,
+.has-dropdown.open .mega-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-menu li,
+.mega-column ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: var(--text);
+}
+
+.dropdown-menu a:hover {
+    background: var(--light);
+    color: var(--primary);
+}
+
+.has-mega .mega-menu {
+    min-width: 680px;
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(180px, 1fr));
+    gap: 1rem;
+}
+
+.mega-column h4 {
+    margin: 0 0 0.7rem;
+    color: var(--primary);
+    font-size: 1rem;
+}
+
+.mega-column a {
+    padding: 0.45rem 0;
+    color: var(--text);
+}
+
+.apply-btn a {
+    background: var(--accent);
+    color: #0a0a0a;
+    padding: 0.7rem 1rem;
+    border-radius: 999px;
+    font-weight: 700;
+}
+
+.apply-btn a:hover {
+    background: #f4b200;
+}
+
+@media (max-width: 980px) {
+    .top-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.4rem;
+    }
+
+    .main-header {
+        flex-wrap: wrap;
+    }
+
+    .menu-toggle {
+        display: inline-block;
+        margin-left: auto;
+    }
+
+    .main-nav {
+        width: 100%;
+        display: none;
+    }
+
+    .main-nav.open {
+        display: block;
+    }
+
+    .nav-list {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-top: 0.7rem;
+    }
+
+    .dropdown-menu,
+    .mega-menu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        border: 0;
+        padding: 0.3rem 0 0.5rem 1rem;
+        display: none;
+    }
+
+    .has-dropdown.open .dropdown-menu,
+    .has-dropdown.open .mega-menu {
+        display: block;
+    }
+
+    .has-mega .mega-menu {
+        grid-template-columns: 1fr;
+        min-width: auto;
+        padding-left: 0;
+    }
+}
